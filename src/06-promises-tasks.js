@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* ************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -29,7 +30,15 @@
  *                                                    //  Ask her again.';
  */
 function willYouMarryMe(/* isPositiveAnswer */) {
+// function willYouMarryMe(isPositiveAnswer) {
   throw new Error('Not implemented');
+  // return new Promise((resolve, reject) => {
+  //   if (typeof isPositiveAnswer !== 'boolean') {
+  //     reject(new Error('Wrong parameter is passed! Ask her again.'));
+  //   }
+  //   if (isPositiveAnswer) resolve('Hooray!!! She said "Yes"!');
+  //   reject(new Error('Oh no, she said "No".'));
+  // });
 }
 
 
@@ -48,8 +57,9 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  // throw new Error('Not implemented');
+  return Promise.all(array);
 }
 
 /**
@@ -71,8 +81,8 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+function getFastestPromise(array) {
+  return Promise.race(array);
 }
 
 /**
