@@ -490,8 +490,38 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const matrix = position.map((lineArr) => lineArr.map((elem) => {
+    if (elem === undefined) return 10;
+    if (elem === 'X') return 1;
+    return 0;
+  }));
+  const res = {};
+  for (let y = 0; y < 3; y += 1) {
+    const keyY = `line${y}`;
+    for (let x = 0; x < 3; x += 1) {
+      const keyX = `col${x}`;
+      const element = matrix[y][x];
+      res[keyY] = res[keyY] ? res[keyY] + element : element;
+      res[keyX] = res[keyX] ? res[keyX] + element : element;
+      if (x === y) {
+        res.diag1 = res.diag1 ? res.diag1 + element : element;
+      }
+      if ((x === 2 && y === 0) || (x === 0 && y === 2) || (x === 1 && y === 1)) {
+        res.diag2 = res.diag2 ? res.diag2 + element : element;
+      }
+    }
+  }
+  let result;
+  const resArr = Object.values(res);
+  resArr.forEach((sum) => {
+    if (sum === 3) {
+      result = 'X';
+    } else if (sum === 0) {
+      result = '0';
+    }
+  });
+  return result;
 }
 
 
